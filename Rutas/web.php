@@ -13,9 +13,14 @@
 Ruta: routes/web.php
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
+Route::get('/','PaginasController@inicio');
+Route::get('/inicio','PaginasController@inicio');
+Route::get('/quienes-somos','PaginasController@quienesSomos');
+Route::get('/donde-estamos','PaginasController@dondeEstamos');
+Route::get('/foro','PaginasController@foro');
 
 Route::get('/contacto', function () {
     return "contacto";
@@ -107,3 +112,8 @@ Route::get('categoria/{id}/{nombre}', function ($id,$nombre) {
 |  Llamar a un controlador desde la ruta
 |--------------------------------------------------------------------------*/
 Route::get('/controlador','MiControladorController@inicio');
+
+/*--------------------------------------------------------------------------
+|  Paso de parámetros a un controlador
+| En este caso la función  dameParametros del controlador MiControladorController recibe el parámetro parametro1 de la ruta--------------------------------------------------------------------------*/
+Route::get('/pasoParam/{parametro1}','MiControladorController@dameParametros');

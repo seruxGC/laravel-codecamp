@@ -29,7 +29,7 @@ class MiControladorController extends Controller
     {
         return 'Estas en el inicio';
     }
-}
+
 
 /*--------------------------------------------------------------------------
 |  Se puede apuntar una ruta a la acción de este controlador
@@ -42,6 +42,23 @@ class MiControladorController extends Controller
  En este caso:
  Route::get('/controlador', 'MiControladorController@inicio');
 |--------------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------------
+|  Crear en el controlador un método que reciba parámetros desde la ruta:
+
+En web.php:
+
+Route::get('/pasoParam/{parametro1}','MiControladorController@dameParametros');
+
+url: http://localhost/laravel/public/pasoParam/ElParametro
+|--------------------------------------------------------------------------*/
+public function dameParametros($parametro)
+{
+    return 'He recibido este parametro ' . $parametro;
+}
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -65,3 +82,4 @@ Estando en el directorio del proyecto de Laravel ejecutar el siguiente comando:
 php artisan make:controller --resource NombreController
 --------------------------------------------------------------------------
 */
+}
