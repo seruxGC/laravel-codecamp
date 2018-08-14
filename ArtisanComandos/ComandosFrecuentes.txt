@@ -1,0 +1,24 @@
+/*
+|--------------------------------------------------------------------------
+| Rutas
+|--------------------------------------------------------------------------
+*/
+
+- Mostrar la lista de Rutas
+
+php artisan route:list
+
+/*
+|--------------------------------------------------------------------------
+| Controladores
+|--------------------------------------------------------------------------
+*/
+
+- Crear controlador desde la consola
+
+php artisan make:controller NombreController
+
+
+- Crear controlador desde la consola con recursos
+
+php artisan make:controller --respurce NombreController

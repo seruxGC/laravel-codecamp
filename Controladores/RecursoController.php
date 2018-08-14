@@ -2,11 +2,17 @@
 
 /*
 |--------------------------------------------------------------------------
-| Crear controlador desde la consola con recursos
+| Crear controlador con recursos desde la consola 
+ * 
+ * El routing de recursos de Laravel asigna las rutas "CRUD" típicas a un controlador 
+ * con una sola línea de código. Estando en el directorio del proyecto de Laravel 
+ * ejecutar el siguiente comando:
 
-Estando en el directorio del proyecto de Laravel ejecutar el siguiente comando:
+php artisan make:controller NombreController --resource
+ 
+ * A continuación, se puede registrar una ruta de recursos para el controlador (en web.php) :
 
-php artisan make:controller --resource NombreController
+Route::resource('nombreRuta', 'NombreControladorRecursosController');
 --------------------------------------------------------------------------
 */
 
