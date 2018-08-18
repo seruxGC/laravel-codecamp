@@ -21,4 +21,4 @@ php artisan make:controller NombreController
 
 - Crear controlador desde la consola con recursos
 
-php artisan make:controller --respurce NombreController
+php artisan make:controller --resource NombreController

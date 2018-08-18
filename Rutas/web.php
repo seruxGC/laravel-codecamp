@@ -138,7 +138,11 @@ Route::get('/controlador', 'MiControladorController@inicio');
  */
 Route::get('/pasoParam/{parametro1}', 'MiControladorController@dameParametros');
 
-
+/*--------------------------------------------------------------------------
+|  Llamada a un controlador que solo contiene un único método
+---------------------------------------------------------------
+-----------*/
+Route::get('user/{param}', 'NombreControladorController');
 
 
 
