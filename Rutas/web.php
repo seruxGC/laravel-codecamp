@@ -85,8 +85,26 @@ Route::get('user/{name?}', function ($name = null) {
 return $name; // John
 }); */
 
+/*--------------------------------------------------------------------------
+|  Ruta que pasa variables a la vista con metodo with
+|--------------------------------------------------------------------------*/
+Route::get('nombreURL', function () {
+    return view('directorio.nombrePlantilla')
+        ->with('nombreVar1', 'valorVar1')
+        ->with('var2', 'valor2');
+});
 
-
+/*--------------------------------------------------------------------------
+|  Ruta que pasa variables a la vista usando un array como segundo parametro
+|--------------------------------------------------------------------------*/
+Route::get('nombreURL', function () {
+    return view('directorio.nombrePlantilla',
+        [
+            'var1' => 'value1',
+            'var2' => 'valor2',
+        ]
+    );
+});
 
 
 /*--------------------------------------------------------------------------
