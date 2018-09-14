@@ -265,7 +265,7 @@ class MiMiddleware
  * middleware y los parámetros con :. Multiples parámetros deben ser separados por comas.
  */
 // Llamada al Middleware desde routes/web.php
-Route::put('post/{id}', function ($id) {
+Route::get('ruta', function () {
     //
 })->middleware('miMiddleware:valorMiParametro');
 
