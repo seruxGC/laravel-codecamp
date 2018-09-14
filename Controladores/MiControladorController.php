@@ -1,4 +1,28 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| Crear controlador desde la consola
+
+Estando en el directorio del proyecto de Laravel ejecutar el siguiente comando:
+
+php artisan make:controller NombreController
+
+Para crear este mismo controlador:
+php artisan make:controller MiControladorController
+|--------------------------------------------------------------------------
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Crear controlador desde la consola con recursos
+
+Estando en el directorio del proyecto de Laravel ejecutar el siguiente comando:
+
+php artisan make:controller --resource NombreController
+--------------------------------------------------------------------------
+*/
+
+
 
 namespace App\Http\Controllers;
 
@@ -59,27 +83,52 @@ public function dameParametros($parametro)
 }
 
 
+public function foro()
+    {
+        return view("foro");
+    }
 
-/*
-|--------------------------------------------------------------------------
-| Crear controlador desde la consola
+    public function galeria()
+    {
+        $viewData = ['dato1', 'dato2', 'dato3'];
+        return view('plantillasPropias.extiende2Plantilla1', compact('viewData'));
+    }
+}
 
-Estando en el directorio del proyecto de Laravel ejecutar el siguiente comando:
 
-php artisan make:controller NombreController
 
-Para crear este mismo controlador:
-php artisan make:controller MiControladorController
-|--------------------------------------------------------------------------
-*/
+/*--------------------------------------------------------------------------
+|  Asignar un Middleware a un controlador
 
-/*
-|--------------------------------------------------------------------------
-| Crear controlador desde la consola con recursos
+ es más conveniente especificar el middleware en el constructor del controlador. Utilizando el método 
+ middleware desde el constructor del controlador, se puede asignar un middleware a las acciones del
+  controlador. Incluso se puede restringir el middleware a únicamente ciertos métodos:
+--------------------------------------------------------------------------*/
 
-Estando en el directorio del proyecto de Laravel ejecutar el siguiente comando:
+// Tras registrar el Middleware en app/Http/Kernel.php
 
-php artisan make:controller --resource NombreController
---------------------------------------------------------------------------
-*/
+class MiControladorController extends Controller
+{
+    public function __construct()
+    {
+        // Para todas las funciones
+        $this->middleware('miMiddleware');
+
+        // Solo para las funciones especificadas. Nombre de las funciones separadas por comas.
+        $this->middleware('miMiddleware')->only('miFuncion');
+
+        // Para todas las funciones excepto las especificadas. Nombre de las funciones separadas por comas.
+        $this->middleware('miMiddleware')->except('inicio');
+
+    }
+
+    public function inicio()
+    {
+        return 'Estas en el inicio';
+    }
+
+    public function miFuncion()
+    {
+
+    }
 }
