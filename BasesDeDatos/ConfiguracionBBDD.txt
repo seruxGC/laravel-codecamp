@@ -1,0 +1,16 @@
+Laravel puede usar multiples Bases de Datos como las que están especificadas 
+en el archivo config/database.php.
+
+
+- Configuración de la Conexión (para trabajar en local):
+
+La configuración de la conexión de la BD se desarrolla en el archivo .env
+el cual se encuentra en la raiz de Laravel.
+
+
+- Configuración de la conexión (para trabajar en producción o en remoto)
+
+Laravel cuenta con otro archivo de configuración de la base de datos .env.example 
+el cual se usa para no mostrar información sensible a la hora de trabajar con otros usuarios.
+Por ejemplo , en ese archivo podemos especificar otro user y password para la BD y también otra
+app key.

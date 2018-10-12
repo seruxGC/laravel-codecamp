@@ -1,0 +1,88 @@
+Migraciones son como un control de versión para tu base de datos, permitiéndole 
+a tu equipo de manera sencilla modificar y compartir el esquema de la base de 
+datos de tu aplicación. Las migraciones están normalmente emparejadas al constructor 
+de esquemas de Laravel para construir fácilmente el esquema de la base de datos de una aplicación.
+
+
+
+- Creación de tablas de BBDD en Laravel (Migrations)
+
+
+    1. Crear archivo migrations: 
+
+    php artisan make:migration create_nombre_table
+
+    Tener en cuenta que el preffijo create y table son convenciónes de nombres de Laravel.
+
+    - Tambien se puede especificar en el comando el nombre de la tabla que tendrá en la BBDD.
+    
+    php artisan make:migration create_nombre_table --create=nombreTablaBBDD
+
+
+    2. Configurar el archivo migrations
+
+
+    3. Ejecutar el comando: php artisan migrate
+
+Los archivos de migrations se encuentran en database/migrations . En estos archivos
+se definen las tablas de las bases de datos que van a ser creadas tras ejecutar el comando
+migrate (tercer paso).
+
+Obviamente para que todo funcione deberemos configurar la conexión a la BBDD con antelación.
+
+
+
+- Modificar tabla de BDD en Laravel (Migrations)
+
+1. Crear archivo migrations: 
+
+    php artisan make:migration agregar_nombreDeLoQueAgrego_nombreTabla --table=nombreTabla
+
+
+2. Configurar el archivo migration tanto el método up() como el down().
+
+    Los para crear y modificar columnas ver documentacion oficial para encontrar
+    todos lso tipos.
+
+3. Ejecutar el comando: php artisan 
+
+
+
+
+- Revertir a una migración (Rollback)
+
+
+    - Revertir a la migración anterior
+   
+         php artisan migrate:rollback
+
+
+    - Revertir un numero de migraciones determinado
+
+        php artisan migrate:rollback --step=5
+
+
+     - Revertir todas las migraciones
+
+        php artisan migrate:reset
+
+
+     - Revertir todas las migraciones y migrar en un solo comando
+
+         php artisan migrate:refresh
+
+
+
+- Comprobar que archivos de migración se han ejecutado
+
+Si no nos acordamos o simplemente queremos saber que archivos de migración se han ejecutado
+y cuales faltan por ejecutar podemos usar el siguiente comando:
+
+    php artisan migrate:status
+
+La documentacion detallada de las Migraciones la ofrece Laravel.
+
+
+
+
+
