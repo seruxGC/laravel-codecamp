@@ -1,0 +1,14 @@
+
+
+La configuración se realiza en el archivo .env
+
+Los parametros a los que tenemos que atender son:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravelTest
+DB_USERNAME=root
+DB_PASSWORD=Carlos.12
+
+Una vez configurados podremos conectarnos a la base de datos.
