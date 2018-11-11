@@ -193,7 +193,7 @@ Cookies
 
 ### Obtener las cookies de la petición
 
-Todas las cookies creadas por el framework de Laravel están cifradas y firmadas con un código de autenticación, lo que significa que se considerarán inválidas si han sido modificadas por el cliente. Para recuperar un valor de una cookie de la solicitud, utilice el método cookie en una instancia de Illuminate\Http\Request: */
+/*Todas las cookies creadas por el framework de Laravel están cifradas y firmadas con un código de autenticación, lo que significa que se considerarán inválidas si han sido modificadas por el cliente. Para recuperar un valor de una cookie de la solicitud, utilice el método cookie en una instancia de Illuminate\Http\Request: */
 
 $value = $request->cookie('name');
 
