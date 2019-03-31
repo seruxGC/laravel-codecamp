@@ -1,0 +1,103 @@
+Instalar composer           https://getcomposer.org/download/
+Instalar virtualbox         https://www.virtualbox.org/
+Instalar vagrant            https://www.vagrantup.com/downloads.html
+
+
+======================================================================
+
+- Añadir vboxmanage a las variables de entorno
+PATH    C:\Program Files\Oracle\VirtualBox
+
+Comprobar:
+composer -V
+vboxmanage --version
+vagrant --version
+php -v
+
+
+- Añadir el box de homestead       https://laravel.com/docs/5.7/homestead
+vagrant box add laravel/homestead
+
+- Instalar el Homestead
+git clone https://github.com/laravel/homestead.git Homestead
+
+- Cuando se termine la instalacion situarse en el directorio creado:
+cd Homestead
+
+- Ejecutar el archivo:
+init.bat    (en windows)     bash init.sh(en mac/linux)
+
+
+=====================================================================
+
+- Crear claves publicas y privadas (en caso de no tenerlas)
+ssh-keygen -t rsa -b 4096 -C "serux91@gmail.com"
+
+- Abrir el archivo Homestead.yaml con un editor de texto y comprobar configuración
+
+---
+ip: "192.168.10.10"             -->  ip que tendrá el servidor
+memory: 2048
+cpus: 1
+provider: virtualbox            -->proveedor de la máquina virtual
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: ~/code               -->DEBE EXISTIR , si no existe crearla(D:\Users\Serux\code)
+			        Es una carpeta compartida con la máquina virtual
+
+      to: /home/vagrant/code    --> Dirección en la máquina virtual en la que estará
+				   la carpeta compartida con la máquina física	
+
+sites:
+    - map: homestead.test           --> Dominio del sitio
+      to: /home/vagrant/code/public  --> Carpeta de la maquina virtual donde se guardarán los archivos del sitio
+
+databases:
+    - homestead                     --> base de datos creada por defecto para laravel
+
+
+======================================================================
+
+- Levantar maquina virtual
+vagrant up                          || vagrant supend || vagrant reload || vagrant reload --provision  (to update the Nginx configuration on the virtual machine)
+
+- Conectarse por ssh
+vagrant ssh
+
+ ====================================================================
+
+- Instalar Laravel en la máquina virtual
+- Situarse en el directorio donde se quiere instalar (en este caso code)
+cd code
+
+- Comando instalación laravel (Via Composer Create-Project)     https://laravel.com/docs/5.7/installation
+composer create-project --prefer-dist laravel/laravel Laravel                 --> "Laravel" hace referencia al nombre del directorio en el que se hará la instalacion
+										  si no existe se creará
+
+
+- Actualizar ruta del proyecto en el archivo Homestead.yaml porque hemos puesto el proyecto en un directorio llamado Laravel
+
+sites:
+    - map: homestead.test           
+      to: /home/vagrant/code/public    cambiar a     to: /home/vagrant/code/Laravel/public
+
+
+==========================================================================
+
+Añadir al archivo hosts la ip del servidor y dominio   (C:\Windows\System32\drivers\etc )
+192.168.10.10 homestead.test
+
+===========================================================================================
+
+- Reiniciar vagrant con provisionador
+vagrant reload --provision
+
+- Acceder a la ruta en el navegador cuando se levante vagrant
+homestead.test
+
+
